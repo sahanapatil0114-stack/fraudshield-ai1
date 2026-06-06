@@ -247,7 +247,11 @@ app.get('/stats', (_req, res) => res.json({ success: true, stats: { model: 'v1.0
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath))
 
-  app.get('/', (req, res) => {
+  app.get('/*', (req, res) => {
+    if (req.path.startsWith('/api')) {
+      return res.status(404).json({ success: false, error: 'Not found' })
+    }
+
     res.sendFile(path.join(distPath, 'index.html'))
   })
 }
