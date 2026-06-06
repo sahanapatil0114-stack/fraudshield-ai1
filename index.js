@@ -11,7 +11,7 @@ import { analyzeTransaction } from './fraudModel.js'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const PORT = process.env.PORT || 3000
 const JWT_SECRET = process.env.JWT_SECRET || 'fraudshield-dev-secret-change-in-production'
-const distPath = path.join(__dirname, '..', 'frontend', 'dist')
+const distPath = path.join(__dirname, 'dist')
 
 initDb()
 
