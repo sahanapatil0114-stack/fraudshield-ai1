@@ -3,8 +3,8 @@ services:
     name: fraudshield
     runtime: node
     plan: free
-    buildCommand: cd frontend && npm install && npm run build && cd ../server && npm install
-    startCommand: cd server && node index.js
+    buildCommand: npm install
+    startCommand: node index.js
     envVars:
       - key: NODE_ENV
         value: production
