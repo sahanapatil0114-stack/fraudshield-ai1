@@ -18,6 +18,9 @@ initDb()
 const app = express()
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json())
+app.get('/', (req, res) => {
+  res.send('FraudShield AI Backend Running Successfully');
+});
 
 // Rewrite /phpapi or /fraudshield/backend requests to match local Node API endpoints
 app.use((req, res, next) => {
