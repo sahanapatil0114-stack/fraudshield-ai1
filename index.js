@@ -246,12 +246,11 @@ app.get('/stats', (_req, res) => res.json({ success: true, stats: { model: 'v1.0
 // ── Serve React frontend ──────────────────────────────────────
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath))
-  app.get('*', (req, res) => {
-    if (req.path.startsWith('/api')) return res.status(404).json({ success: false, error: 'Not found' })
+
+  app.get('/', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'))
   })
 }
-
 app.listen(PORT, () => {
   console.log(`FraudShield AI → http://localhost:${PORT}`)
   if (fs.existsSync(distPath)) console.log('Frontend + API on same server ✓')
