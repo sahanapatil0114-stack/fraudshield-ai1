@@ -1,0 +1,11 @@
+# FraudShield Backend — InfinityFree / Apache
+Options -Indexes
+RewriteEngine On
+
+# Pass Authorization header to PHP (required for JWT on InfinityFree)
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Handle OPTIONS preflight (CORS handled in PHP cors.php)
+RewriteCond %{REQUEST_METHOD} OPTIONS
+RewriteRule ^(.*)$ $1 [R=200,L]
